@@ -1,7 +1,8 @@
-require("@nomicfoundation/hardhat-toolbox");
-require("hardhat-circom");
-/** @type import('hardhat/config').HardhatUserConfig */
-module.exports = {
+import { HardhatUserConfig } from "hardhat/config";
+import "@nomicfoundation/hardhat-toolbox";
+import "hardhat-circom";
+
+const config: HardhatUserConfig = {
   solidity: "0.8.27",
   circom: {
     // (required) The final ptau file, relative to inputBasePath, from a Phase 1 ceremony
@@ -10,3 +11,5 @@ module.exports = {
     circuits: [{ name: "sudoku" }],
   },
 };
+
+export default config;

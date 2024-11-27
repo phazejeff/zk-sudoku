@@ -23,3 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 /cache
 /artifacts
+/src/artifacts
+/src/cache
+/typechain-types
