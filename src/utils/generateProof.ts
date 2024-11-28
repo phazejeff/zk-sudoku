@@ -8,7 +8,7 @@ const VERFICATION_KEY_FILE = "/circuits/sudoku.vkey.json"
  * 
  * @param unsolved_grid 9x9 initial starting sudoku
  * @param solved_grid 9x9 completed sudoku, derived from start
- * @param userAddress user's ethereum address, converted into a Number
+ * @param userAddress user's ethereum address, converted into a number
  * @returns 
  */
 export async function generateProof(unsolved_grid: number[][], solved_grid: number[][], userAddress: string) {
@@ -25,7 +25,9 @@ export async function generateProof(unsolved_grid: number[][], solved_grid: numb
 
     const res = await verifyProof(proof, publicSignals);
 
-    const params = await snarkjs.groth16.exportSolidityCallData(proof, publicSignals);
+    const calldata = await snarkjs.groth16.exportSolidityCallData(proof, publicSignals);
+    const paramsFull = JSON.parse("[" + calldata + "]");
+    const params = paramsFull.slice(0, 3);
     return {valid: res, params: params};
 }
 

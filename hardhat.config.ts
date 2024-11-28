@@ -10,6 +10,12 @@ const config: HardhatUserConfig = {
     // (required) Each object in this array refers to a separate circuit
     circuits: [{ name: "sudoku" }],
   },
+  paths: {
+    artifacts: "./src/artifacts"
+  },
+  typechain: {
+    target: 'web3-v1'
+  }
 };
 
 export default config;
