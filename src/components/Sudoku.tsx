@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 type SudokuProps = {
     grid: number[][];
@@ -7,14 +7,19 @@ type SudokuProps = {
     buttonText: string;
     disabled: boolean;
     buttonColor: string;
-    cursor: string
-}
+    cursor: string;
+};
 
 const Sudoku: React.FC<SudokuProps> = ({ grid = [], onSubmit, buttonText, disabled, buttonColor, cursor }) => {
-  // Create a state to track editable cells
+  // State to track editable cells
   const [editableGrid, setEditableGrid] = useState<number[][]>(() => 
     grid.map(row => [...row])
   );
+
+  // Update editableGrid state if grid prop changes
+  useEffect(() => {
+    setEditableGrid(grid.map(row => [...row]));
+  }, [grid]);
 
   // Handle cell value change
   const handleCellChange = (rowIndex: number, cellIndex: number, value: string) => {
@@ -137,6 +142,6 @@ const Sudoku: React.FC<SudokuProps> = ({ grid = [], onSubmit, buttonText, disabl
       </div>
     </div>
   );
-}
+};
 
 export default Sudoku;

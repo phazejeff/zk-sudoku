@@ -26,3 +26,4 @@ yarn-error.log*
 /src/artifacts
 /src/cache
 /typechain-types
+/notes.txt

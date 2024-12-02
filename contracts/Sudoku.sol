@@ -7,7 +7,7 @@ contract SudokuVerifier is Verifier {
 
     mapping(address => bool) public solved;
     address[] private solvedArr;
-    address private manager;
+    address public manager;
 
     uint[9][9] public currentSudoku;
     uint public timePublished;
